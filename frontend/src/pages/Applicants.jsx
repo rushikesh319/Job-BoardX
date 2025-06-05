@@ -67,13 +67,13 @@ function Applicants() {
                   <div className="mt-4">
                     <button
                       onClick={() => handleUpdateStatus(application._id, "shortlisted")}
-                      className="mr-2 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                      className="mr-2 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 cursor-pointer"
                     >
                       Accept
                     </button>
                     <button
                       onClick={() => handleUpdateStatus(application._id, "rejected")}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer"
                     >
                       Reject
                     </button>

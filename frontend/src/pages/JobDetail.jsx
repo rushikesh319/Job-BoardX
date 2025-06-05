@@ -121,14 +121,14 @@ function JobDetail() {
         />
         <div className="flex justify-end gap-4">
           <button
-            className="bg-red-500 text-white px-5 py-2 rounded-md font-bold"
+            className="bg-red-500 text-white px-5 py-2 rounded-md font-bold cursor-pointer"
             onClick={() => setModalOpen(false)}
           >
             Cancel
           </button>
           <button
             onClick={handleSubmitApplication}
-            className="bg-cyan-500 text-white px-5 py-2 rounded-md font-bold"
+            className="bg-cyan-500 text-white px-5 py-2 rounded-md font-bold cursor-pointer"
           >
             Submit Resume
           </button>
