@@ -23,7 +23,7 @@ function Navbar() {
    }
   return (
      
-    <header className="w-full bg-amber-50 bg-opacity-90 backdrop-blur-md fixed top-0 shadow-xl z-50 transition-all duration-300 p-4">
+    <header className="w-full bg-white bg-opacity-90 backdrop-blur-md fixed top-0 shadow-xl z-100 transition-all duration-300 p-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
  
         <Link

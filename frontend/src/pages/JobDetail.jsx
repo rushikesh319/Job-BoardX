@@ -42,72 +42,67 @@ function JobDetail() {
   };
 
   return (
-<div className="relative w-full h-screen">
+<div className="relative w-full min-h-screen overflow-hidden">
   {/* Background Image */}
-  <div className="absolute inset-0 overflow-hidden">
+  <div className="absolute inset-0">
     <img
       src="/detailpage.jpg"
       alt="Detail Background"
       className="w-full h-full object-cover"
     />
-    <div className="absolute inset-0  bg-opacity-30" />
+    <div className="absolute inset-0  bg-opacity-40" />
   </div>
 
   {/* Content Card */}
-  <motion.div 
-  initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, ease: 'easeOut' }}
-   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg p-8 w-[90%] max-w-4xl space-y-6">
-    <p className="text-3xl md:text-4xl font-bold text-gray-600 capitalize">{job.companyName}</p>
-
-    <div className="space-y-8">
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Location:</span> {job.location}
-      </p>
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Looking For:</span> {job.title}
-      </p>
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Job Type:</span> {job.jobType}
-      </p>
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Salary:</span> {job.salaryRange}
-      </p>
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Experience Needed:</span> {job.experienceLevel}
-      </p>
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Essential Skills:</span> {job.skillsRequired}
-      </p>
-      <p className="text-lg md:text-xl border-b pb-2">
-        <span className="uppercase font-semibold">Remote:</span> {job.isRemote ? "Available" : "Not Available"}
+  <motion.div
+    initial={{ opacity: 0, y: -50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: 'easeOut' }}
+    className="relative z-10 flex items-center justify-center min-h-screen px-4 py-10"
+  >
+    <div className="bg-white/80 backdrop-blur-lg rounded-xl shadow-xl w-full max-w-3xl p-6 sm:p-10 space-y-6">
+      <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 capitalize text-center">
+        {job.companyName}
       </p>
 
-      <div className="mt-4">
-        <p className=" text-xl font-semibold mb-1 uppercase">Description:</p>
-        <p className="text-base">{job.description}</p>
+      <div className="space-y-4 sm:space-y-6 text-gray-800">
+        {[
+          ['Location', job.location],
+          ['Looking For', job.title],
+          ['Job Type', job.jobType],
+          ['Salary', job.salaryRange],
+          ['Experience Needed', job.experienceLevel],
+          ['Essential Skills', job.skillsRequired],
+          ['Remote', job.isRemote ? 'Available' : 'Not Available'],
+        ].map(([label, value], index) => (
+          <p key={index} className="text-base sm:text-lg md:text-xl border-b pb-2">
+            <span className="uppercase font-semibold">{label}:</span> {value}
+          </p>
+        ))}
+
+        <div>
+          <p className="text-lg sm:text-xl font-semibold mb-1 uppercase">Description:</p>
+          <p className="text-sm sm:text-base">{job.description}</p>
+        </div>
       </div>
+
+      <button
+        onClick={() => {
+          if (!user) {
+            navigate('/signup');
+          } else if (user.role === 'recruiter') {
+            toast.error("Recruiters can't apply to the jobs");
+          } else {
+            setModalOpen(true);
+            setResumeFile(null);
+          }
+        }}
+        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 sm:py-3 text-base sm:text-lg font-bold rounded-md transition"
+      >
+        Apply
+      </button>
     </div>
-
-    {/* Apply Button */}
-    <button
-      onClick={() => {
-        if (!user) {
-          navigate('/signup');
-        } else if (user.role === "recruiter") {
-          toast.error("Recruiters can't apply to the jobs");
-        } else {
-          setModalOpen(true);
-          setResumeFile(null);
-        }
-      }}
-      className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 text-lg font-bold rounded-md transition"
-    >
-      Apply
-    </button>
   </motion.div>
-
   {/* Modal */}
   {modalOpen && (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">

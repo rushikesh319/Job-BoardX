@@ -44,7 +44,7 @@ function HomePage() {
         </div>
 
         {/* Search Bar */}
-        <div className="w-full flex justify-center px-4 mb-4">
+        <div className="w-full flex justify-center px-4 mb-4 ">
           <input
             type="text"
             value={searchQuery}

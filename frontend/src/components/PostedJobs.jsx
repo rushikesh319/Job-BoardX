@@ -55,8 +55,8 @@ function PostedJobs() {
 
   {/* Modal */}
   {isModalOpen && (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div className="bg-white p-4 rounded-lg w-[90%] max-w-2xl">
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 ">
+      <div className="bg-white  h-full rounded-lg w-[90%] max-w-2xl overflow-y-auto ">
         <CreateJobForm
           isEdit={true}
           jobData={selectedJob}

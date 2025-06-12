@@ -10,36 +10,63 @@ function RecruiterDashboard() {
    
    
   return (
-   <div className="w-full flex flex-col md:flex-row h-screen overflow-hidden">
-  {/* Sidebar */}
-  <div className="w-full md:w-[30%] bg-cyan-400 md:h-full flex flex-col items-center pt-4 md:pt-10 md:fixed md:left-0 md:top-0 md:bottom-0 z-10 md:overflow-hidden sm:h-[100px] sm:justify-center">
+<div className="flex flex-col  h-full">
+
+  {/* Top Navigation for Mobile */}
+  <div className="md:hidden flex  w-full bg-cyan-500 shadow-md">
     <button
       onClick={() => setActiveTab("createJob")}
       className={clsx(
-        'flex justify-center items-center h-12 w-full cursor-pointer text-lg md:text-xl font-bold',
-        activeTab === "createJob" ? "bg-white text-cyan-500" : "bg-cyan-400 text-white"
+        "w-1/2 py-3 text-center text-sm font-bold",
+        activeTab === "createJob" ? "bg-white text-cyan-500" : "text-white"
       )}
     >
       Create Job
     </button>
-
     <button
       onClick={() => setActiveTab("postedJobs")}
       className={clsx(
-        'flex justify-center items-center h-12 w-full cursor-pointer text-lg md:text-xl font-bold',
-        activeTab === "postedJobs" ? "bg-white text-cyan-500" : "bg-cyan-400 text-white"
+        "w-1/2 py-3 text-center text-sm font-bold",
+        activeTab === "postedJobs" ? "bg-white text-cyan-500" : "text-white"
       )}
     >
       Jobs Posted
     </button>
   </div>
 
-  {/* Right Panel */}
-  <div className="md:ml-[30%] w-full h-full overflow-y-auto">
-    {activeTab === "createJob" && <CreateJob />}
-    {activeTab === "postedJobs" && <PostedJobs />}
+  <div className="flex flex-1 h-full">
+
+    {/* Sidebar (Desktop Only) */}
+    <div className="hidden md:flex md:flex-col justify-center w-[30%] bg-cyan-400 pt-10 fixed top-0 left-0 bottom-0 z-10">
+      <button
+        onClick={() => setActiveTab("createJob")}
+        className={clsx(
+          "h-12 w-full text-center text-xl font-bold cursor-pointer",
+          activeTab === "createJob" ? "bg-white text-cyan-500" : "text-white"
+        )}
+      >
+        Create Job
+      </button>
+      <button
+        onClick={() => setActiveTab("postedJobs")}
+        className={clsx(
+          "h-12 w-full text-center text-xl font-bold cursor-pointer",
+          activeTab === "postedJobs" ? "bg-white text-cyan-500" : "text-white"
+        )}
+      >
+        Jobs Posted
+      </button>
+    </div>
+
+    {/* Main Content */}
+    <div className="flex-1 overflow-y-auto md:ml-[30%] p-4">
+      {activeTab === "createJob" && <CreateJob />}
+      {activeTab === "postedJobs" && <PostedJobs />}
+    </div>
+
   </div>
 </div>
+
 
 
   )
