@@ -39,77 +39,90 @@ function LoginPage() {
   }
   return (
     <> 
-     <div className="w-full min-h-[700px] relative overflow-hidden">
-  <img src={'/login.jpg'} className="w-full h-full object-cover absolute inset-0 -z-10" />
+    <div className="h-screen w-full bg-white flex">
 
-  <motion.div 
-   initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, ease: 'easeOut' }}
-  className="
-    bg-white rounded-4xl absolute left-1/2 top-1/2 z-50
-    transform -translate-x-1/2 -translate-y-1/2
-    flex flex-col justify-evenly items-center p-6
-    w-[400px] h-[500px]
- 
-    max-w-[90vw] max-h-[90vh]  /* limits width and height on small screens */
-    sm:w-[400px] sm:h-[500px]  /* original size on sm and up */
-  ">
-    <h2 className="text-3xl text-gray-600 font-bold text-center">Login your Account</h2>
+  {/* Left Section - Welcome */}
+  <div className="hidden lg:flex lg:w-7/10 bg-cyan-50 items-center justify-center">
+    <div className="text-center px-12">
+      <h1 className="text-4xl font-extrabold text-cyan-600 mb-4">
+        Welcome Back!
+      </h1>
+      <p className="text-gray-600 text-lg">
+        Login to access your account and continue your journey with us.
+      </p>
+    </div>
+  </div>
 
-    <form onSubmit={handleLoginSubmit} className="space-y-6 w-full">
-      <div>
-        <label htmlFor="email" className="text-lg block mb-1">
-          Email :
-        </label>
-        <div className="relative h-10">
-          <div className="absolute pointer-events-none px-2 py-3">
-            <Mail className="h-5 text-gray-800" />
-          </div>
-          <input
-            type="text"
-            id="email"
-            className="bg-white w-full border-blue-950 border-2 rounded-md h-10 px-8"
-            placeholder="example@gmail.com"
-            value={loginData.email}
-            onChange={(e) => setloginData({ ...loginData, email: e.target.value })}
-            required
-          />
-          {errors.email && <p className="text-red-500">{errors.email[0]}</p>}
-        </div>
+  {/* Right Section - Form */}
+  <div className="w-full lg:w-3/10 flex items-center justify-center px-6 lg:px-8">
+    <div className="w-full max-w-sm py-6 lg:py-0 mt-20 lg:mt-0">
+
+      {/* Header */}
+      <div className="mb-5 text-center">
+        <h2 className="text-2xl font-extrabold text-gray-800">
+          Login to Your Account
+        </h2>
+        <p className="text-gray-500 text-sm mt-1">
+          Enter your credentials to continue
+        </p>
       </div>
 
-      <div>
-        <label htmlFor="password" className="text-lg block mb-1">
-          Password :
-        </label>
-        <div className="relative h-10">
-          <div className="absolute pointer-events-none px-2 py-3">
-            <User className="h-5 text-gray-800" />
-          </div>
+      {/* Form */}
+      <form onSubmit={handleLoginSubmit} className="space-y-3">
+
+        {/* Email */}
+        <div>
+          <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
+          <input
+            type="email"
+            placeholder="you@example.com"
+            className="w-full h-9 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500"
+            value={loginData.email}
+            onChange={(e) =>
+              setloginData({ ...loginData, email: e.target.value })
+            }
+            required
+          />
+          {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email[0]}</p>}
+        </div>
+
+        {/* Password */}
+        <div>
+          <label className="block text-xs font-medium text-gray-700 mb-1">Password</label>
           <input
             type="password"
-            id="password"
-            className="bg-white border-blue-950 border-2 w-full rounded-md h-10 px-8"
-            placeholder="*****"
+            placeholder="••••••••"
+            className="w-full h-9 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500"
             value={loginData.password}
-            onChange={(e) => setloginData({ ...loginData, password: e.target.value })}
+            onChange={(e) =>
+              setloginData({ ...loginData, password: e.target.value })
+            }
             required
           />
-          {errors.password && <p className="text-red-500">{errors.password[0]}</p>}
+          {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password[0]}</p>}
         </div>
-      </div>
 
-      <button
-        type="submit"
-        className="bg-cyan-400 w-full p-3 mt-3 rounded-4xl text-xl text-white font-bold hover:bg-sky-600 transition-all duration-300"
-        disabled={loading}
-      >
-        {loading ? "Logging..." : "Login"}
-      </button>
-    </form>
-  </motion.div>
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full h-9 bg-cyan-600 hover:bg-cyan-700 text-white rounded-md font-semibold text-sm transition duration-300"
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
+      </form>
+
+      {/* Footer */}
+      <p className="text-center text-gray-500 text-xs mt-4">
+        Don't have an account?{" "}
+        <a href="/signup" className="text-cyan-600 hover:underline">
+          Sign Up
+        </a>
+      </p>
+    </div>
+  </div>
 </div>
+
 
     </>
 

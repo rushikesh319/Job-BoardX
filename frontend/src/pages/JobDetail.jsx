@@ -42,67 +42,117 @@ function JobDetail() {
   };
 
   return (
-<div className="relative w-full min-h-screen overflow-hidden">
-  {/* Background Image */}
-  <div className="absolute inset-0">
-    <img
-      src="/detailpage.jpg"
-      alt="Detail Background"
-      className="w-full h-full object-cover"
-    />
-    <div className="absolute inset-0  bg-opacity-40" />
+<div className="min-h-screen w-full bg-gray-50 font-sans text-gray-900 pt-30 px-6 sm:px-12">
+  {/* pt-24 prevents navbar overlap (adjust if navbar height differs) */}
+
+  {/* Page Container */}
+  <div className="max-w-7xl mx-auto">
+
+    {/* Header Section */}
+    <header className="border-b pb-8 space-y-4">
+
+     {/* Company Name (Primary) */}
+  <h1 className="text-4xl  text-cyan-600 sm:text-5xl font-extrabold tracking-tight">
+    {job.companyName}
+  </h1>
+
+    
+
+  {/* Job Meta */}
+  <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm sm:text-base text-gray-500 pt-2">
+
+   <span>
+      <span className="font-semibold text-gray-700">Role:</span>{' '}
+      {job.title}
+    </span>
+
+    <span>
+      <span className="font-semibold text-gray-700">Location:</span>{' '}
+      {job.location}
+    </span>
+
+    <span>
+      <span className="font-semibold text-gray-700">Job Type:</span>{' '}
+      {job.jobType}
+    </span>
+
+    <span>
+      <span className="font-semibold text-gray-700">Work Mode:</span>{' '}
+      {job.isRemote ? 'Remote Available' : 'On-site'}
+    </span>
   </div>
 
-  {/* Content Card */}
-  <motion.div
-    initial={{ opacity: 0, y: -50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: 'easeOut' }}
-    className="relative z-10 flex items-center justify-center min-h-screen px-4 py-10"
-  >
-    <div className="bg-white/80 backdrop-blur-lg rounded-xl shadow-xl w-full max-w-3xl p-6 sm:p-10 space-y-6">
-      <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 capitalize text-center">
-        {job.companyName}
-      </p>
+    </header>
 
-      <div className="space-y-4 sm:space-y-6 text-gray-800">
-        {[
-          ['Location', job.location],
-          ['Looking For', job.title],
-          ['Job Type', job.jobType],
-          ['Salary', job.salaryRange],
-          ['Experience Needed', job.experienceLevel],
-          ['Essential Skills', job.skillsRequired],
-          ['Remote', job.isRemote ? 'Available' : 'Not Available'],
-        ].map(([label, value], index) => (
-          <p key={index} className="text-base sm:text-lg md:text-xl border-b pb-2">
-            <span className="uppercase font-semibold">{label}:</span> {value}
-          </p>
-        ))}
+    {/* Main Layout */}
+    <main className="grid grid-cols-1 lg:grid-cols-3 gap-14 mt-10">
+
+      {/* Left Content */}
+      <section className="lg:col-span-2 space-y-10">
 
         <div>
-          <p className="text-lg sm:text-xl font-semibold mb-1 uppercase">Description:</p>
-          <p className="text-sm sm:text-base">{job.description}</p>
+          <h2 className="text-2xl font-semibold mb-4">
+            About the Position
+          </h2>
+          <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+            {job.description}
+          </p>
         </div>
-      </div>
 
-      <button
-        onClick={() => {
-          if (!user) {
-            navigate('/signup');
-          } else if (user.role === 'recruiter') {
-            toast.error("Recruiters can't apply to the jobs");
-          } else {
-            setModalOpen(true);
-            setResumeFile(null);
-          }
-        }}
-        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 sm:py-3 text-base sm:text-lg font-bold rounded-md transition"
-      >
-        Apply
-      </button>
-    </div>
-  </motion.div>
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">
+            Required Skills
+          </h2>
+          <p className="text-gray-700 text-base sm:text-lg">
+            {job.skillsRequired}
+          </p>
+        </div>
+
+      </section>
+
+      {/* Right Sidebar */}
+      <aside className="space-y-8">
+
+        <div>
+          <p className="text-sm uppercase tracking-wide text-gray-500">
+            Salary Range
+          </p>
+          <p className="text-lg font-semibold">
+            {job.salaryRange}
+          </p>
+        </div>
+
+        <div>
+          <p className="text-sm uppercase tracking-wide text-gray-500">
+            Experience Level
+          </p>
+          <p className="text-lg font-semibold">
+            {job.experienceLevel}
+          </p>
+        </div>
+
+        <button
+          onClick={() => {
+            if (!user) {
+              navigate('/signup');
+            } else if (user.role === 'recruiter') {
+              toast.error("Recruiters can't apply to the jobs");
+            } else {
+              setModalOpen(true);
+              setResumeFile(null);
+            }
+          }}
+          className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-3 text-lg font-semibold rounded-md transition"
+        >
+          Apply Now
+        </button>
+
+      </aside>
+    </main>
+
+  </div>
+ 
+   
   {/* Modal */}
   {modalOpen && (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">

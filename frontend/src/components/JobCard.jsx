@@ -3,39 +3,46 @@
  function JobCard({job}) {
    return (<> 
      
-     <div className="flex flex-col shadow-lg p-4 sm:p-5 md:p-6 justify-center gap-4 sm:gap-5 md:gap-6 text-base sm:text-lg md:text-xl rounded-2xl  ease-in-out  hover:-translate-y-2 hover:scale-105 hover:shadow-xl duration-300">
-  <p className="uppercase mx-auto text-md sm:text-2xl font-bold text-gray-500">
-    {job.title}
-  </p>
+    <div className="h-full bg-white rounded-xl border border-gray-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
 
-  <p className="uppercase border-b-2 border-b-gray-300 p-2 relative text-gray-800  text-sm sm:text-xl">
-    {job.companyName}
-    <span className="text-gray-600 lowercase italic font-normal absolute right-2 top-1/2 -translate-y-1/2 text-sm sm:text-base">
-      - company-name
-    </span>
-  </p>
+  {/* Top Content */}
+  <div className="space-y-3">
 
-  <p className="uppercase border-b-2 border-b-gray-300 p-2 relative text-sm sm:text-xl">
-    {job.jobType}
-    <span className="text-gray-600 lowercase italic font-normal absolute right-2 top-1/2 -translate-y-1/2 text-sm sm:text-base">
-      - job-type
-    </span>
-  </p>
+    {/* Company */}
+    <p className="text-sm text-gray-500 font-medium">
+      {job.companyName}
+    </p>
 
-  <p className="uppercase border-b-2 border-b-gray-300 p-2 relative text-sm sm:text-xl">
-    ${job.salaryRange}
-    <span className="text-gray-600 lowercase italic font-normal absolute right-2 top-1/2 -translate-y-1/2 text-sm sm:text-base">
-      - salary
-    </span>
-  </p>
+    {/* Role */}
+    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 leading-tight">
+      {job.title}
+    </h3>
 
+    {/* Meta Info */}
+    <div className="flex flex-wrap gap-4 text-sm text-gray-600 pt-2">
+      <span>
+        <span className="font-medium text-gray-700">Type:</span>{' '}
+        {job.jobType}
+      </span>
+
+      <span>
+        <span className="font-medium text-gray-700">Salary:</span>{' '}
+        {job.salaryRange}
+      </span>
+    </div>
+
+  </div>
+
+  {/* Action */}
   <Link
     to={`/jobdetail/${job._id}`}
-    className="hover:bg-sky-600 hover:text-white duration-300 rounded-md border border-cyan-500 flex justify-center p-2 text-sm sm:text-base cursor-pointer"
+    className="mt-6 inline-flex justify-center items-center rounded-md border border-cyan-600 text-cyan-600 font-semibold py-2 text-sm hover:bg-cyan-600 hover:text-white transition"
   >
     View Details
   </Link>
+
 </div>
+
 
   
      </>

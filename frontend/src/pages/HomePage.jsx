@@ -28,18 +28,10 @@ function HomePage() {
 
   return (
     <>
-      <div className="w-full h-full">
-        {/* Header Image */}
-        <div className="w-full overflow-hidden">
-          <img
-            src="/header2.jpg"
-            alt="Career Header"
-            className="w-full object-cover h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px]"
-          />
-        </div>
-
+      <div className="w-full h-full bg-gray-50">
+        
         {/* Title */}
-        <div className="w-full h-[200px] flex justify-center items-center text-2xl sm:text-3xl md:text-4xl p-6 text-cyan-500 italic text-center">
+        <div className="w-full h-[300px]  font-bold flex justify-center font-serif items-center text-2xl sm:text-3xl md:text-5xl p-6 text-cyan-600   italic text-center">
           <p>Start Your Career Journey</p>
         </div>
 
@@ -50,18 +42,23 @@ function HomePage() {
             value={searchQuery}
             onChange={handleSearchChange}
             placeholder="Search jobs by title, description or skill..."
-            className="w-full sm:w-2/3 md:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full sm:w-2/3 md:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-600"
           />
         </div>
 
         {/* Job Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 p-12">
-          {jobs.length === 0 ? (
-            <p className="text-center text-gray-400 col-span-full">No jobs found.</p>
-          ) : (
-            jobs.map((job) => <JobCard key={job._id} job={job} />)
-          )}
-        </div>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-12">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+    {jobs.length === 0 ? (
+      <p className="text-center text-gray-400 col-span-full">
+        No jobs found.
+      </p>
+    ) : (
+      jobs.map((job) => <JobCard key={job._id} job={job} />)
+    )}
+  </div>
+</div>
+
 
         <Footer />
       </div>

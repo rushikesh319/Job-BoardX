@@ -23,14 +23,14 @@ function Navbar() {
    }
   return (
      
-    <header className="w-full bg-white bg-opacity-90 backdrop-blur-md fixed top-0 shadow-xl z-100 transition-all duration-300 p-4">
+    <header className="w-full bg-white bg-opacity-90 backdrop-blur-md fixed top-0 shadow-md z-100 transition-all duration-300 p-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
  
         <Link
           to={"/"}
-          className="text-2xl font-bold text-cyan-400 flex gap-1 items-center"
+          className="text-2xl font-bold text-cyan-600 flex gap-1 items-center"
         >
-          JobBoardX <Search className="h-8" />
+          JobBoardX <Search className="h-4" />
         </Link>
 
        
@@ -45,7 +45,7 @@ function Navbar() {
         <div className="hidden md:flex gap-4 items-center">
           <Link
             to={"/"}
-            className="w-40 h-12 bg-cyan-400 text-white text-xl font-mono font-bold flex items-center justify-center rounded-md shadow-md hover:bg-sky-500 transition-all duration-300"
+            className="py-2 px-4 h-8 bg-cyan-600 text-white text-sm font-mono font-bold flex items-center justify-center rounded-md shadow-md hover:bg-sky-500 transition-all duration-300"
           >
             Home
           </Link>
@@ -54,13 +54,13 @@ function Navbar() {
             <>
               <button
                 onClick={handleClick}
-                className="w-40 h-12 bg-cyan-400 text-white text-xl font-mono font-bold flex items-center justify-center rounded-md shadow-md hover:bg-sky-500 transition-all duration-300"
+                className="py-2 px-4 h-8 bg-cyan-600 text-white text-sm font-mono font-bold flex items-center justify-center rounded-md shadow-md hover:bg-sky-500 transition-all duration-300"
               >
                 Dashboard
               </button>
               <button
                 onClick={logout}
-                className="w-40 h-12 bg-cyan-400 text-white text-xl font-mono font-bold flex items-center justify-center rounded-md shadow-md hover:bg-sky-500 transition-all duration-300"
+                className="py-2 px-4 h-8 bg-cyan-600 text-white text-sm font-mono font-bold flex items-center justify-center rounded-md shadow-md hover:bg-sky-500 transition-all duration-300"
               >
                 <LogOut className="h-5" />
               </button>
@@ -69,13 +69,13 @@ function Navbar() {
             <>
               <Link
                 to={"/signup"}
-                className="w-40 h-12 bg-cyan-400 text-white text-xl font-mono font-bold flex items-center justify-center rounded-md gap-2 shadow-md hover:bg-sky-500 transition-all duration-300"
+                className="py-2 px-4 h-8 bg-cyan-600 text-white text-sm font-mono font-bold flex items-center justify-center rounded-md gap-2 shadow-md hover:bg-sky-500 transition-all duration-300"
               >
                 <UserPlus className="h-5" /> SignUp
               </Link>
               <Link
                 to={"/login"}
-                className="w-40 h-12 bg-cyan-400 text-white text-xl font-mono font-bold flex items-center justify-center rounded-md gap-2 shadow-md hover:bg-sky-500 transition-all duration-300"
+                className="py-2 px-4 h-8 bg-cyan-600 text-white text-sm font-mono font-bold flex items-center justify-center rounded-md gap-2 shadow-md hover:bg-sky-500 transition-all duration-300"
               >
                 <LogIn className="h-5" /> Login
               </Link>
@@ -89,7 +89,7 @@ function Navbar() {
         <div className="md:hidden flex flex-col items-center gap-4 mt-4 px-4 pb-4">
           <Link
             to={"/"}
-            className="w-full text-center bg-cyan-400 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
+            className="w-full text-center bg-cyan-600 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
             onClick={() => setMenuOpen(false)}
           >
             Home
@@ -102,7 +102,7 @@ function Navbar() {
                   handleClick();
                   setMenuOpen(false);
                 }}
-                className="w-full text-center bg-cyan-400 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
+                className="w-full text-center bg-cyan-600 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
               >
                 Dashboard
               </button>
@@ -111,7 +111,7 @@ function Navbar() {
                   logout();
                   setMenuOpen(false);
                 }}
-                className="w-full text-center bg-cyan-400 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
+                className="w-full text-center bg-cyan-600 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
               >
                 <LogOut className="inline-block h-4 mr-1" /> Logout
               </button>
@@ -120,14 +120,14 @@ function Navbar() {
             <>
               <Link
                 to={"/signup"}
-                className="w-full text-center bg-cyan-400 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
+                className="w-full text-center bg-cyan-600 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
                 onClick={() => setMenuOpen(false)}
               >
                 <UserPlus className="inline-block h-4 mr-1" /> SignUp
               </Link>
               <Link
                 to={"/login"}
-                className="w-full text-center bg-cyan-400 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
+                className="w-full text-center bg-cyan-600 text-white text-lg font-mono py-2 rounded-md shadow-md hover:bg-sky-500"
                 onClick={() => setMenuOpen(false)}
               >
                 <LogIn className="inline-block h-4 mr-1" /> Login

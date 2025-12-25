@@ -10,38 +10,40 @@ function RecruiterDashboard() {
    
    
   return (
-<div className="flex flex-col  h-full">
+<div className="flex h-screen w-full bg-gray-50">
 
-  {/* Top Navigation for Mobile */}
-  <div className="md:hidden flex  w-full bg-cyan-500 shadow-md">
-    <button
-      onClick={() => setActiveTab("createJob")}
-      className={clsx(
-        "w-1/2 py-3 text-center text-sm font-bold",
-        activeTab === "createJob" ? "bg-white text-cyan-500" : "text-white"
-      )}
-    >
-      Create Job
-    </button>
-    <button
-      onClick={() => setActiveTab("postedJobs")}
-      className={clsx(
-        "w-1/2 py-3 text-center text-sm font-bold",
-        activeTab === "postedJobs" ? "bg-white text-cyan-500" : "text-white"
-      )}
-    >
-      Jobs Posted
-    </button>
-  </div>
-
-  <div className="flex flex-1 h-full">
-
-    {/* Sidebar (Desktop Only) */}
-    <div className="hidden md:flex md:flex-col justify-center w-[30%] bg-cyan-400 pt-10 fixed top-0 left-0 bottom-0 z-10">
+  {/* Sidebar for Desktop */}
+  <div className="hidden md:flex flex-col justify-start w-1/4 bg-cyan-600 pt-20 fixed top-0 left-0 bottom-0 z-20 shadow-lg">
+    <div className="flex flex-col space-y-4 px-4">
       <button
         onClick={() => setActiveTab("createJob")}
         className={clsx(
-          "h-12 w-full text-center text-xl font-bold cursor-pointer",
+          "py-3 rounded-lg text-lg font-semibold transition-colors duration-200 hover:bg-cyan-100 hover:text-cyan-600",
+          activeTab === "createJob" ? "bg-white text-cyan-600" : "text-white"
+        )}
+      >
+        Create Job
+      </button>
+      <button
+        onClick={() => setActiveTab("postedJobs")}
+        className={clsx(
+          "py-3 rounded-lg text-lg font-semibold transition-colors duration-200 hover:bg-cyan-100 hover:text-cyan-600",
+          activeTab === "postedJobs" ? "bg-white text-cyan-600" : "text-white"
+        )}
+      >
+        Jobs Posted
+      </button>
+    </div>
+  </div>
+
+  {/* Main Content */}
+  <div className="flex-1 md:ml-1/4 p-4 md:p-8 overflow-y-auto">
+    {/* Mobile Tabs */}
+    <div className="md:hidden flex fixed top-16 left-0 right-0 bg-cyan-500 z-30 shadow-md">
+      <button
+        onClick={() => setActiveTab("createJob")}
+        className={clsx(
+          "flex-1 py-3 text-center text-sm font-bold transition-colors duration-200",
           activeTab === "createJob" ? "bg-white text-cyan-500" : "text-white"
         )}
       >
@@ -50,7 +52,7 @@ function RecruiterDashboard() {
       <button
         onClick={() => setActiveTab("postedJobs")}
         className={clsx(
-          "h-12 w-full text-center text-xl font-bold cursor-pointer",
+          "flex-1 py-3 text-center text-sm font-bold transition-colors duration-200",
           activeTab === "postedJobs" ? "bg-white text-cyan-500" : "text-white"
         )}
       >
@@ -58,12 +60,11 @@ function RecruiterDashboard() {
       </button>
     </div>
 
-    {/* Main Content */}
-    <div className="flex-1 overflow-y-auto md:ml-[30%] p-4">
+    {/* Content below mobile tabs */}
+    <div className="mt-20 md:mt-0">
       {activeTab === "createJob" && <CreateJob />}
       {activeTab === "postedJobs" && <PostedJobs />}
     </div>
-
   </div>
 </div>
 

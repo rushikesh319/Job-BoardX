@@ -18,7 +18,7 @@ function Applicants() {
   };
 
   return (
-    <div className="p-8 w-full">
+    <div className="p-8 w-full pt-30">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-600">Applicants for This Job</h1>
       {applicants.length === 0 ? (
         <p className="text-gray-400">No applicants yet.</p>

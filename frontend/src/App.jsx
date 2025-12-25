@@ -30,15 +30,8 @@ function App() {
   return (
     <> 
      <div className="h-full bg-white overflow-hidden">
-     {/* <div className="absolute inset-0 overflow-hidden">
-     <div className="absolute inset-0">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle,_rgba(2,_0,_36,_1)_0%,_rgba(9,_9,_121,_1)_0%,_rgba(9,_18,_127,_1)_0%,_rgba(15,_15,_138,_1)_0%,_rgba(0,_212,_255,_1)_100%)] */}
-{/* "> */}
-      {/* </div>
-     </div>
-
-     </div> */}
-     <div className="relative z-50 pt-20"> 
+    
+     <div className="relative z-50"> 
 
      <Navbar/>
      <Routes>

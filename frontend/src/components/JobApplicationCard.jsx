@@ -7,7 +7,7 @@ function JobApplicationCard({ application }) {
 
   return (
     <div className="bg-white shadow-xl rounded-lg p-6  hover:shadow-lg transition-all">
-      <h2 className="text-2xl font-semibold text-cyan-400 mb-2">
+      <h2 className="text-2xl font-semibold text-cyan-600 mb-2">
         {jobId.title}
       </h2>
       <p className="text-lg text-gray-700">{jobId.companyName}</p>

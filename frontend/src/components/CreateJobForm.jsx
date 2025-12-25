@@ -115,82 +115,68 @@ if (isEdit) {
   
   }
   return (
-   <motion.div initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, ease: 'easeOut' }}
-   className="w-full max-w-3xl mx-auto rounded-2xl shadow-2xl p-4 gap-2 flex flex-col items-center"  >
-  <h2 className="text-2xl font-bold text-gray-600">{isEdit ? "Update Job " : "Create Job"}</h2>
-  <div className="p-4 rounded-2xl w-full">
-    <form onSubmit={handleFormSubmit} className="space-y-4">
-      
-      {/* Title */}
-      <div>
-        <label className="text-md">Job Title :</label>
-        <div className="mt-1 relative h-10 px-2 py-1">
-          <div className="absolute pointer-events-none px-2 py-3">
-            <Tag className="h-3 text-gray-800" />
-          </div>
+  <div className="flex flex-col md:flex-row h-full w-full">
+  {/* Sidebar placeholder for spacing on desktop */}
+  <div className="hidden md:block md:w-[30%]"></div>
+
+  {/* Form container */}
+  <div className="flex-1 flex justify-center items-center p-4 md:p-8 min-h-[calc(100vh-64px)]">
+    <div className="w-full max-w-3xl">
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-600 mb-4 text-center md:text-left">
+        {isEdit ? "Update Job" : "Create Job"}
+      </h2>
+
+      <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-4">
+
+        {/* Job Title */}
+        <div>
+          <label className="text-sm md:text-md">Job Title :</label>
           <input
             type="text"
-            className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+            className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
             placeholder="Software Developer"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             required
           />
-          {errors.title && <p className="text-red-500">{errors.title[0]}</p>}
+          {errors.title && <p className="text-red-500 text-sm">{errors.title[0]}</p>}
         </div>
-      </div>
 
-      {/* Company Name + Location */}
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="w-full md:w-1/2">
-          <label className="text-md">Company Name :</label>
-          <div className="mt-1 relative h-10 px-2 py-1">
-            <div className="absolute pointer-events-none px-2 py-3">
-              <Building className="h-3 text-gray-800" />
-            </div>
+        {/* Company Name + Location */}
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+          <div className="w-full md:w-1/2">
+            <label className="text-sm md:text-md">Company Name :</label>
             <input
               type="text"
-              className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+              className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
               placeholder="Google, Amazon"
               value={formData.companyName}
               onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
               required
             />
-            {errors.companyName && <p className="text-red-500">{errors.companyName[0]}</p>}
+            {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName[0]}</p>}
           </div>
-        </div>
 
-        <div className="w-full md:w-1/2">
-          <label className="text-md">Location :</label>
-          <div className="mt-1 relative h-10 px-2 py-1">
-            <div className="absolute pointer-events-none px-2 py-3">
-              <MapPin className="h-3 text-gray-800" />
-            </div>
+          <div className="w-full md:w-1/2">
+            <label className="text-sm md:text-md">Location :</label>
             <input
               type="text"
-              className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+              className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
               placeholder="Chicago, USA"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
               required
             />
-            {errors.location && <p className="text-red-500">{errors.location[0]}</p>}
+            {errors.location && <p className="text-red-500 text-sm">{errors.location[0]}</p>}
           </div>
         </div>
-      </div>
 
-      {/* Job Type + Salary */}
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="w-full md:w-1/2">
-          <label className="text-md">Job Type :</label>
-          <div className="mt-1 relative h-10 px-2 py-1">
-            <div className="absolute pointer-events-none px-2 py-3">
-              <Briefcase className="h-3 text-gray-800" />
-            </div>
+        {/* Job Type + Salary */}
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+          <div className="w-full md:w-1/2">
+            <label className="text-sm md:text-md">Job Type :</label>
             <select
-              className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+              className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
               value={formData.jobType}
               onChange={(e) => setFormData({ ...formData, jobType: e.target.value })}
               required
@@ -201,117 +187,93 @@ if (isEdit) {
               <option value="contract">Contract</option>
               <option value="internship">Internship</option>
             </select>
-            {errors.jobType && <p className="text-red-500">{errors.jobType[0]}</p>}
+            {errors.jobType && <p className="text-red-500 text-sm">{errors.jobType[0]}</p>}
           </div>
-        </div>
 
-        <div className="w-full md:w-1/2">
-          <label className="text-md">Salary :</label>
-          <div className="mt-1 relative h-10 px-2 py-1">
-            <div className="absolute pointer-events-none px-2 py-3">
-              <Wallet className="h-3 text-gray-800" />
-            </div>
+          <div className="w-full md:w-1/2">
+            <label className="text-sm md:text-md">Salary :</label>
             <input
               type="number"
-              className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+              className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
               placeholder="12,000"
               value={formData.salaryRange}
               onChange={(e) => setFormData({ ...formData, salaryRange: e.target.value })}
               required
             />
-            {errors.salaryRange && <p className="text-red-500">{errors.salaryRange[0]}</p>}
+            {errors.salaryRange && <p className="text-red-500 text-sm">{errors.salaryRange[0]}</p>}
           </div>
         </div>
-      </div>
 
-      {/* Experience + Remote */}
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="w-full md:w-[80%]">
-          <label className="text-md">Experience Level :</label>
-          <div className="mt-1 relative h-10 px-2 py-1">
-            <div className="absolute pointer-events-none px-2 py-3">
-              <BadgeInfo className="h-3 text-gray-800" />
-            </div>
+        {/* Experience + Remote */}
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+          <div className="w-full md:w-4/5">
+            <label className="text-sm md:text-md">Experience Level :</label>
             <select
-              className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+              className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
               value={formData.experienceLevel}
               onChange={(e) => setFormData({ ...formData, experienceLevel: e.target.value })}
               required
             >
-              <option value="">Select role</option>
+              <option value="">Select level</option>
               <option value="entry-level">Entry-Level</option>
               <option value="mid-level">Mid-Level</option>
               <option value="senior-level">Senior-Level</option>
             </select>
-            {errors.experienceLevel && <p className="text-red-500">{errors.experienceLevel[0]}</p>}
+            {errors.experienceLevel && <p className="text-red-500 text-sm">{errors.experienceLevel[0]}</p>}
+          </div>
+
+          <div className="w-full md:w-1/5 flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={formData.isRemote}
+              onChange={(e) => setFormData({ ...formData, isRemote: e.target.checked })}
+              className="h-5 w-5"
+            />
+            <label className="text-sm md:text-md">Remote</label>
           </div>
         </div>
 
-        <div className="w-full md:w-[20%] flex flex-col justify-end">
-          <label className="text-md">Remote :</label>
-          <input
-            type="checkbox"
-            className="border-2 border-blue-950 h-8 mt-2"
-            checked={formData.isRemote}
-            onChange={(e) => setFormData({ ...formData, isRemote: e.target.checked })}
-          />
-          {errors.isRemote && <p className="text-red-500">{errors.isRemote[0]}</p>}
-        </div>
-      </div>
-
-      {/* Skills */}
-      <div>
-        <label className="text-md">Required Skills :</label>
-        <div className="mt-1 relative h-10 px-2 py-1">
-          <div className="absolute pointer-events-none px-2 py-3">
-            <Settings className="h-3 text-gray-800" />
-          </div>
+        {/* Skills */}
+        <div>
+          <label className="text-sm md:text-md">Required Skills :</label>
           <input
             type="text"
-            className="border-2 border-blue-950 w-full rounded-md h-8 px-8"
+            className="border-2 border-blue-950 w-full rounded-md h-8 px-3 md:px-8"
             placeholder="JavaScript, React"
             value={formData.skillsRequired}
             onChange={(e) => setFormData({ ...formData, skillsRequired: e.target.value })}
             required
           />
-          {errors.skillsRequired && <p className="text-red-500">{errors.skillsRequired[0]}</p>}
+          {errors.skillsRequired && <p className="text-red-500 text-sm">{errors.skillsRequired[0]}</p>}
         </div>
-      </div>
 
-      {/* Description */}
-      <div>
-        <label className="text-md">Description :</label>
-        <div className="mt-1 relative h-auto px-2 py-1">
-          <div className="absolute pointer-events-none px-2 py-3">
-            <FileText className="h-5 text-gray-800" />
-          </div>
+        {/* Description */}
+        <div>
+          <label className="text-sm md:text-md">Description :</label>
           <textarea
-            className="border-2 border-blue-950 w-full rounded-md pt-2 px-8"
+            className="border-2 border-blue-950 w-full rounded-md px-3 md:px-8 py-2 md:py-3"
             rows="4"
             placeholder="Describe the job..."
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             required
           />
-          {errors.description && <p className="text-red-500">{errors.description[0]}</p>}
+          {errors.description && <p className="text-red-500 text-sm">{errors.description[0]}</p>}
         </div>
-      </div>
 
-      {/* Buttons */}
-      <button
-        type="submit"
-        className="bg-cyan-500 w-full p-3 mt-3 rounded-md text-md font-bold text-white hover:bg-sky-600 duration-300 cursor-pointer"
-      >
-        {isEdit ? "Update Job" : "Create Job"}
-      </button>
-      {isEdit && (
-        <button type="button" onClick={onClose} className="ml-2 text-gray-700 cursor-pointer">
-          Cancel
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="bg-cyan-500 w-full p-3 rounded-md text-md font-bold text-white hover:bg-sky-600 duration-300"
+        >
+          {isEdit ? "Update Job" : "Create Job"}
         </button>
-      )}
-    </form>
+
+      </form>
+    </div>
   </div>
-</motion.div>
+</div>
+
 
   );
 }
